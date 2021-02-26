@@ -1,7 +1,7 @@
 ---
 title: "Brownlows Bets"
-author: "Your Name"
-date: "Year 2020"
+author: "Amy Estrada"
+date: "Spring 2021"
 output: 
   html_document:
     number_sections: true
@@ -63,6 +63,7 @@ hist(saveBank)
 favstats(saveBank)
 ```
 
+Fair odd for a 35 person class is around 4.25:1, which makes these odds reult in a mean close to 0. Meaning neither side is heavily favored.
 
 # What size of class makes the 2:1 bet fair?  
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
