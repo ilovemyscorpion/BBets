@@ -63,18 +63,54 @@ hist(saveBank)
 favstats(saveBank)
 ```
 
-Fair odd for a 35 person class is around 4.25:1, which makes these odds reult in a mean close to 0. Meaning neither side is heavily favored.
+
+Dr. J loss amount is $4.25 that resulted in a $178 minimum loss and a $373 maximum profit.
 
 # What size of class makes the 2:1 bet fair?  
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
 
+To make the bet fair, 28 students is needed.
 
 # In the class and payoff as described what is a 95% confidence interval for Brownlow's earnings?
   
 <!--Explain and display your method of coming up with a 95% confidence interval of  professor Brownlows winnings (or losings)-->
+
+# What is Brownlow's average profit/loss
+
+```{r}
+classSize = 35
+winAmount=1
+loseAmount= 2.00
+
+test = vector('numeric')
+saveBank=vector('numeric')
+for (j in 1:1000){
+  bank=0
+for(i in 1:637){
+test = sample(URN, size=classSize, replace=TRUE)
+ifelse(length(unique(test))==classSize, (bank=bank-loseAmount),(bank=bank+winAmount))
+saveBank[j] = bank
+}
+}
+hist(saveBank)
+
+```
+```{r}
+favstats(saveBank)
+```
+
+```{r}
+sortedBank <- sort(saveBank)
+lcl <- sortedBank[25]
+ucl <- sortedBank[975]
+print(paste(lcl, ucl))
+```
+
+The lower confidence intervals that DR. J would win would be approximately `r lcl`, the upper confidence is `r ucl`
 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If professor Brownlow is consistantly making or losing money how could he change his payout so that his profits center on zero?  Also discuss what size his class should be in order to have his current scheme balance at zero profit.!-->
 
+Dr. J's would need a class of 28 students with a loss amount of $4.25, and a win amount of $1 to have a profit of $0.
